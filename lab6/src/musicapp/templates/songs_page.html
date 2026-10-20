@@ -1,0 +1,54 @@
+{# Страница каталога композиций. Аналог JSP-страницы BookList.jsp #}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Музыкальный каталог</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="page">
+
+    <div class="top">
+        <header>
+            <h1 class="title"><span>музыкальный</span><span>каталог</span></h1>
+        </header>
+        <a class="home-link" href="/">← На главную</a>
+    </div>
+
+    <form class="filters" method="get" action="/catalog">
+        <input type="hidden" name="submit" value="1">
+
+        <div class="field">
+            <label for="name">Имя пользователя</label>
+            <input id="name" name="name" type="text" value="{{ name }}" autocomplete="off">
+        </div>
+
+        <div class="field">
+            <label for="genre">Жанр</label>
+            <select id="genre" name="genre">
+                <option value="" {% if not genre %}selected{% endif %}>все</option>
+                <option value="rock" {% if genre == 'rock' %}selected{% endif %}>рок</option>
+                <option value="pop" {% if genre == 'pop' %}selected{% endif %}>поп</option>
+                <option value="jazz" {% if genre == 'jazz' %}selected{% endif %}>джаз</option>
+            </select>
+        </div>
+
+        <button class="btn" type="submit">Показать</button>
+    </form>
+
+    <section>
+        {% if submitted %}
+            <p class="message">Здравствуйте, {{ name }}! Найдено композиций: {{ songs|length }}</p>
+            {% include "list_data.html" %}
+        {% else %}
+            <p class="message">Введите имя пользователя и выберите жанр.</p>
+        {% endif %}
+    </section>
+
+</main>
+</body>
+</html>

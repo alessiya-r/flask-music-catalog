@@ -1,0 +1,29 @@
+{# Страница отказа в доступе (код 403) #}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Доступ запрещён</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="page">
+
+    <div class="top">
+        <header>
+            <h1 class="title"><span>доступ</span><span>запрещён</span></h1>
+            <p class="subtitle">Пользователю {{ username }} не разрешён доступ к этой странице.</p>
+        </header>
+        <a class="home-link" href="/catalog">← В каталог</a>
+    </div>
+
+    <section>
+        <p class="message">Требуется учётная запись с другой ролью.</p>
+    </section>
+
+</main>
+</body>
+</html>

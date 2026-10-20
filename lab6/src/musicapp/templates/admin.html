@@ -1,0 +1,40 @@
+{# Служебная страница администратора. Защищена ролью admin #}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Администрирование</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="page">
+
+    <div class="top">
+        <header>
+            <h1 class="title title-long"><span>администрирование</span></h1>
+            <p class="subtitle">Вы вошли как {{ username }}. Ниже список пользователей и их роли.</p>
+        </header>
+        <a class="home-link" href="/catalog">← В каталог</a>
+    </div>
+
+    <section>
+        <table>
+            <tr>
+                <th>Пользователь</th>
+                <th>Роли</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.roles|join(', ') }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+</main>
+</body>
+</html>

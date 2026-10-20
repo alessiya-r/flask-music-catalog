@@ -1,0 +1,5 @@
+# Файл с настройками
+FLASK_APP=app
+FLASK_RUN_HOST=127.0.0.1
+FLASK_RUN_PORT=8080
+FLASK_DEBUG=1

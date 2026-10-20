@@ -1,0 +1,32 @@
+{# Страница каталога композиций #}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Музыкальный каталог</title>
+</head>
+<body>
+    <h2>Музыкальный каталог</h2>
+
+    <form action="/catalog" method="get">
+        <input type="hidden" name="submit" value="1">
+        Имя пользователя: <input type="text" name="name" value="{{ name }}">
+        Жанр:
+        <select name="genre">
+            <option value="">все</option>
+            <option value="rock" {% if genre == 'rock' %}selected{% endif %}>Рок</option>
+            <option value="pop" {% if genre == 'pop' %}selected{% endif %}>Поп</option>
+            <option value="jazz" {% if genre == 'jazz' %}selected{% endif %}>Джаз</option>
+        </select>
+        <button type="submit">Показать</button>
+    </form>
+
+    {% if submitted %}
+        <p>Здравствуйте, {{ name }}! Найдено композиций: {{ songs|length }}</p>
+        {% include "list_data.html" %}
+    {% else %}
+        <p>Введите имя пользователя и выберите жанр.</p>
+    {% endif %}
+
+    <p><a href="/">На главную</a></p>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{# Фрагмент со списком композиций. Аналог JSP-страницы ListData.jsp #}
+{% import "macros.html" as tags %}
+
+<ul class="tracks">
+    {% for song in songs %}
+        {{ tags.song_row(song) }}
+    {% endfor %}
+</ul>

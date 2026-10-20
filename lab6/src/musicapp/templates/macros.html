@@ -1,0 +1,9 @@
+{# Библиотека макросов. Аналог библиотеки тегов, подключаемой директивой taglib #}
+{% macro song_row(song) %}
+{% set genre_names = {"rock": "рок", "pop": "поп", "jazz": "джаз"} %}
+<li class="track">
+    <span class="track-title">{{ song.title }}</span>
+    <span class="track-artist">{{ song.artist }} · {{ song.year }}</span>
+    <span class="track-genre">{{ genre_names[song.genre] }}</span>
+</li>
+{% endmacro %}

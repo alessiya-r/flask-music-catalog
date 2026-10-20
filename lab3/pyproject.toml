@@ -1,0 +1,29 @@
+
+# pyproject.toml - файл описания проекта (аналог pom.xml)
+
+# --- Система сборки (аналог <build> и <plugins> в pom.xml) ---
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+# --- Описание проекта (аналог groupId, artifactId, version) ---
+[project]
+name = "musicapp"
+version = "0.1.0"
+description = "Лабораторная работа №3: Web-приложение на сервлетах (музыкальный каталог)"
+requires-python = ">=3.11"
+authors = [{ name = "Alessiya" }]
+
+# --- Зависимости (аналог <dependencies> в pom.xml) ---
+# Flask заменяет библиотеку javax.servlet-api из методички
+dependencies = [
+    "flask>=3.1",
+]
+
+# --- Настройки сборщика (аналог конфигурации плагинов) ---
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# Включить HTML-страницы в дистрибутив
+[tool.setuptools.package-data]
+musicapp = ["templates/*.html"]

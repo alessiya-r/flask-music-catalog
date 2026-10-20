@@ -1,0 +1,9 @@
+{# Библиотека макросов#}
+{% macro song_row(song) %}
+<tr>
+    <td>{{ song.title }}</td>
+    <td>{{ song.artist }}</td>
+    <td>{{ song.genre }}</td>
+    <td>{{ song.year }}</td>
+</tr>
+{% endmacro %}

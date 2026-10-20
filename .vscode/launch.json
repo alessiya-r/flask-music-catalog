@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Flask: lab1",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "flask",
+            "cwd": "${workspaceFolder}/lab1",
+            "python": "${workspaceFolder}/lab1/.venv/bin/python",
+            "args": ["run", "--no-debugger", "--no-reload"],
+            "jinja": true
+        }
+    ]
+}

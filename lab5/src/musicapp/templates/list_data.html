@@ -1,0 +1,14 @@
+{# Фрагмент с телом таблицы #}
+{% import "macros.html" as tags %}
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Название</th>
+        <th>Исполнитель</th>
+        <th>Жанр</th>
+        <th>Год</th>
+    </tr>
+    {% for song in songs %}
+        {{ tags.song_row(song) }}
+    {% endfor %}
+</table>
