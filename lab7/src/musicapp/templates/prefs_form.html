@@ -1,0 +1,49 @@
+{# Страница запроса имени пользователя и цвета. Аналог BookList1.jsp.
+   Значения подставляются из Cookie, если пользователь заходил раньше #}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Настройки пользователя</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="page">
+
+    <div class="top">
+        <header>
+            <h1 class="title"><span>настройки</span><span>пользователя</span></h1>
+        </header>
+        <a class="home-link" href="/">← На главную</a>
+    </div>
+
+    {% if message %}
+        <p class="message">{{ message }}</p>
+    {% endif %}
+
+    <form class="filters" method="get" action="/prefs/save">
+
+        <div class="field">
+            <label for="name">Имя пользователя</label>
+            {# значение берётся из Cookie #}
+            <input id="name" name="name" type="text" value="{{ name }}" autocomplete="off">
+        </div>
+
+        <div class="field">
+            <label for="color">Цвет страницы вывода</label>
+            <select id="color" name="color">
+                {% for key, title in colors.items() %}
+                    <option value="{{ key }}" {% if color == key %}selected{% endif %}>{{ title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button class="btn" type="submit">Отправить</button>
+    </form>
+
+</main>
+</body>
+</html>

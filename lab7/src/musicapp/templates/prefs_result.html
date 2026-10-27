@@ -1,0 +1,42 @@
+{# Страница вывода сохранённых данных. Аналог AskAutorName.jsp.
+   Показывает значения из Cookie и переменных сессии в выбранном цвете #}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Сохранённые данные</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="page">
+
+    <div class="top">
+        <header>
+            <h1 class="title out-{{ color }}"><span>здравствуйте,</span><span>{{ name }}</span></h1>
+            <p class="subtitle">Данные выведены выбранным цветом: {{ color_name }}.</p>
+        </header>
+        <a class="home-link" href="/prefs">← Изменить настройки</a>
+    </div>
+
+    <section class="out-{{ color }}">
+        <h3>Значения из Cookie</h3>
+        <table>
+            <tr><th>Имя Cookie</th><th>Значение</th></tr>
+            <tr><td>user_name</td><td>{{ name }}</td></tr>
+            <tr><td>page_color</td><td>{{ color }}</td></tr>
+        </table>
+
+        <h3>Переменные сессии</h3>
+        <table>
+            <tr><th>Переменная</th><th>Значение</th></tr>
+            <tr><td>visits (количество обращений)</td><td>{{ visits }}</td></tr>
+            <tr><td>last_visit (дата последнего обращения)</td><td>{{ last_visit }}</td></tr>
+        </table>
+    </section>
+
+</main>
+</body>
+</html>

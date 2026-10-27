@@ -1,9 +1,4 @@
-"""Аутентификация и авторизация пользователей.
-
-Модуль заменяет настройки безопасности сервера Apache Tomcat:
-файл users.json соответствует tomcat-users.xml, а декоратор
-requires_role - секции security-constraint в файле web.xml.
-"""
+"""Аутентификация и авторизация пользователей"""
 
 import json
 from functools import wraps
@@ -15,7 +10,7 @@ from werkzeug.security import check_password_hash
 # Файл с пользователями, паролями и ролями (аналог tomcat-users.xml)
 USERS_FILE = Path(__file__).parent / "users.json"
 
-# Контекст аутентификации, отображаемый в окне входа (аналог realm-name)
+# Контекст аутентификации, отображаемый в окне входа
 REALM = "Music Catalog"
 
 
@@ -53,11 +48,7 @@ def request_auth():
 
 
 def requires_role(*roles):
-    """Защищает ресурс и разрешает доступ только указанным ролям.
-
-    Аналог секции security-constraint в файле web.xml: задаёт
-    защищаемый ресурс и список ролей, которым он доступен.
-    """
+    """Защищает ресурс и разрешает доступ только указанным ролям"""
     def decorator(view):
         @wraps(view)
         def wrapper(*args, **kwargs):
@@ -85,3 +76,15 @@ def requires_role(*roles):
 
         return wrapper
     return decorator
+
+#flask --app musicapp run --port 8080
+#flask --app musicapp run --port 8443 --cert conf/mystore.crt --key conf/mystore.key
+
+
+
+
+
+
+
+#ls -l conf
+#openssl x509 -in conf/mystore.crt -noout -subject -dates

@@ -1,0 +1,43 @@
+{# Главная страница с выбором языка интерфейса (лабораторная работа № 4) #}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ m.catalog }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="page">
+
+    <div class="top">
+        <header>
+            <h1 class="title"><span>{{ m.catalog }}</span></h1>
+            <p class="subtitle lang">{{ m.language }}:
+                <a href="/?lang=ru">RU</a> | <a href="/?lang=en">EN</a>
+            </p>
+        </header>
+        <a class="home-link" href="/catalog">{{ m.catalog }} →</a>
+    </div>
+
+    <form class="filters" action="/SongsList" method="get">
+        <input type="hidden" name="lang" value="{{ lang }}">
+
+        <div class="field">
+            <label for="genre">{{ m.genre }}</label>
+            <select id="genre" name="genre">
+                <option value="">{{ m.all }}</option>
+                <option value="rock">{{ m.genres['rock'] }}</option>
+                <option value="pop">{{ m.genres['pop'] }}</option>
+                <option value="jazz">{{ m.genres['jazz'] }}</option>
+            </select>
+        </div>
+
+        <button class="btn" type="submit">{{ m.show }}</button>
+    </form>
+
+</main>
+</body>
+</html>

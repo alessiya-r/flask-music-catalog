@@ -1,0 +1,17 @@
+{
+    "catalog": "Music Catalog",
+    "language": "Language",
+    "genre": "Genre",
+    "all": "all",
+    "show": "Show",
+    "selected_genre": "Selected genre",
+    "title": "Title",
+    "artist": "Artist",
+    "year": "Year",
+    "home": "Home",
+    "genres": {
+        "rock": "Rock",
+        "pop": "Pop",
+        "jazz": "Jazz"
+    }
+}

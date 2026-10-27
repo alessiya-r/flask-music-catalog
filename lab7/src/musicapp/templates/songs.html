@@ -1,0 +1,49 @@
+{# Страница сервлета SongsList (лабораторная работа № 4) #}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ m.catalog }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="page">
+
+    <div class="top">
+        <header>
+            <h1 class="title"><span>{{ m.catalog }}</span></h1>
+            <p class="subtitle lang">{{ m.language }}:
+                <a href="/SongsList?genre={{ genre }}&amp;lang=ru">RU</a> |
+                <a href="/SongsList?genre={{ genre }}&amp;lang=en">EN</a>
+            </p>
+        </header>
+        <a class="home-link" href="/?lang={{ lang }}">{{ m.home }}</a>
+    </div>
+
+    <section>
+        <p class="message">{{ m.selected_genre }}: {{ m.genres[genre] if genre else m.all }}</p>
+
+        <table>
+            <tr>
+                <th>{{ m.title }}</th>
+                <th>{{ m.artist }}</th>
+                <th>{{ m.genre }}</th>
+                <th>{{ m.year }}</th>
+            </tr>
+            {% for song in songs %}
+            <tr>
+                <td>{{ song.title }}</td>
+                <td>{{ song.artist }}</td>
+                <td>{{ m.genres[song.genre] }}</td>
+                <td>{{ song.year }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+</main>
+</body>
+</html>
